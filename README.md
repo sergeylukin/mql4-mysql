@@ -14,7 +14,7 @@ Supported 32 bit environment only.
 How to use
 ----------
 
-```
+```c
 #include <mql4-mysql.mqh>
 
 string  host     = "localhost";

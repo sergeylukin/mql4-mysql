@@ -1,6 +1,6 @@
 ## History
 
-v1.0.0
+v0.1.0
 
 - Initial version
 - Make sure to support unicode strings in new MQL4 as of build 600

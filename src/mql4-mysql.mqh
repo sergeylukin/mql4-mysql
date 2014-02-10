@@ -149,45 +149,23 @@ int MySQL_FetchArray(int dbConnectId, string query, string & data[][]){
     
     ArrayResize(data, num_rows);
     
-    string fields[];
-    ArrayResize(fields, num_fields);
-    
     for ( int i = 0; i < num_rows; i++ ) {
     
       int row_ptr = mysql_fetch_row(resultStruct);
       int len_ptr = mysql_fetch_lengths(resultStruct);
       
       for ( int j = 0; j < num_fields; j++ ) {
-         if (i==0) {
-           int field_ptr = mysql_fetch_field(resultStruct);
-           int field_string_length = lstrlenA(field_ptr);
-           
-           int field_ptr_name=0;
-           memcpy(field_ptr_name, field_ptr, sizeof(int));
-           
-           ArrayResize(byte, field_string_length);
-           ArrayInitialize(byte, 0);
-           RtlMoveMemory(byte, field_ptr_name, field_string_length);
-           fields[j] = CharArrayToString(byte);
-           
-           LocalFree(field_ptr);
-           LocalFree(field_ptr_name);
-         }
-         
-         // get leng
          int leng;
          memcpy(leng, len_ptr + j*sizeof(int), sizeof(int));
          
          ArrayResize(byte,leng+1);
          ArrayInitialize(byte,0);
-         // get row_ptr_pos
          
          int row_ptr_pos;
          memcpy(row_ptr_pos, row_ptr + j*sizeof(int), sizeof(int));
          memcpy(byte, row_ptr_pos, leng);
          
          string s = CharArrayToString(byte);
-         //Print ("Field: " + fields[j], " ~ String: " + s);
          data[i][j] = s;
          
          LocalFree(leng);

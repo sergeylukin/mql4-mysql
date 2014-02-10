@@ -54,7 +54,7 @@ void    mysql_free_result   (int resultStruct);
 //| Probably not the most elegant way but it works well for simple purposes    |
 //| and is flexible enough to allow multiple connections                       |
 //+----------------------------------------------------------------------------+
-bool init_MySQL(int & dbConnectId, string host, string user, string pass, string dbName, string port, string socket, string client) {
+bool init_MySQL(int & dbConnectId, string host, string user, string pass, string dbName, int port = 3306, int socket = 0, int client = 0) {
     dbConnectId = mysql_init(dbConnectId);
     
     if ( dbConnectId == 0 ) {

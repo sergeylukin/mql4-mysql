@@ -204,7 +204,8 @@ int MySQL_FetchArray(int dbConnectId, string query, string & data[][]){
 }
 
 //+----------------------------------------------------------------------------+
-//| Lovely function that helps us to communicate with ANSI DLLs, source:       |
+//| Lovely function that helps us to get ANSI strings from DLLs to our UNICODE |
+//| format                                                                     |
 //| http://forum.mql4.com/60708                                                |
 //+----------------------------------------------------------------------------+
 string mql4_mysql_ansi2unicode(int ptrStringMemory)

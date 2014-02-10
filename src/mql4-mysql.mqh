@@ -83,12 +83,14 @@ bool init_MySQL(int & dbConnectId, string host, string user, string pass, string
     }
     return (true);
 }
+
 //+----------------------------------------------------------------------------+
 //|                                                                            |
 //+----------------------------------------------------------------------------+
 void deinit_MySQL(int dbConnectId){
     mysql_close(dbConnectId);
 }
+
 //+----------------------------------------------------------------------------+
 //| Check whether there was an error with last query                           |
 //|                                                                            |
@@ -104,6 +106,7 @@ bool MySQL_NoError(int dbConnectId) {
     }
     return (true);
 }
+
 //+----------------------------------------------------------------------------+
 //| Simply run a query, perfect for actions like INSERTs, UPDATEs, DELETEs     |
 //+----------------------------------------------------------------------------+
@@ -124,9 +127,11 @@ bool MySQL_Query(int dbConnectId, string query) {
 //| return (-1): error; (0): 0 rows selected; (1+): some rows selected;         |
 //+----------------------------------------------------------------------------+
 int MySQL_FetchArray(int dbConnectId, string query, string & data[][]){
+
     if ( !MySQL_Query(dbConnectId, query) ) {
         return (-1);
     }
+    
     int resultStruct = mysql_store_result(dbConnectId);
     
     if ( !MySQL_NoError(dbConnectId) ) {
@@ -213,3 +218,4 @@ string mql4_mysql_ansi2unicode(int ptrStringMemory)
   return str;
 }
 //+----------------------------------------------------------------------------+
+

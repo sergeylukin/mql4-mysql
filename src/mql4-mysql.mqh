@@ -176,7 +176,7 @@ int MySQL_FetchArray(int dbConnectId, string query, string & data[][]){
     mysql_free_result(resultStruct);
     
     if ( MySQL_NoError(dbConnectId) ) {
-        return (1);
+        return (num_rows);
     }    
     return (-1);
 }
